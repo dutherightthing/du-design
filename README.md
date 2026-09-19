@@ -37,7 +37,7 @@ du-design/
 ├── your-profile.md        ← Jerry's standing preferences (grows over time)
 ├── decisions-log.md       ← dated record of what shipped and why
 ├── 00-intake/             ← ⭐ the discovery/interview skill — run first
-├── principles/            ← cross-project rules by medium
+├── principles/            ← cross-project rules by medium (+ patterns/ — distilled component notes)
 ├── skills/                ← deeper skills (taste, design-dna, motion, decks)
 ├── toolbelt/              ← index cards for code libraries (when to use what)
 ├── sources/               ← router: which external source to pull from + how to retrieve it

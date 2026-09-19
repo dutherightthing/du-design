@@ -11,8 +11,10 @@
    - **install** → it's a code library; read its `toolbelt/` card, install into the *project*.
    - **direct** → plain GitHub/CDN fetch (allowed through the network policy).
    - **scrape** → the domain is blocked by the network egress policy; retrieve via the **Orthogonal recipe** at the bottom. This is proven to work and cheap.
+   - **note, then scrape** → read the in-repo distilled note first (free, in-context); scrape the source only if you still need to see current examples or extract tokens.
 4. Galleries return *indexes of other people's live sites*. The usual chain is: **scrape the gallery index → pick 2–3 example site URLs → screenshot or run `design-dna` on those** to extract tokens. The gallery gives you candidates; the extraction gives you the actual look.
-5. **Do not commit scraped output into this repo.** Fetch at build time and use it in the project. This keeps the library small and sidesteps copyright on other people's designs. Distilled *pattern notes* (our own words) are the only gallery-derived thing that belongs in-repo — see `principles/patterns/` if/when it exists.
+5. **Check for a distilled note first.** Some needs already have an in-repo pattern note (our own encoded judgment) under [`../principles/patterns/`](../principles/patterns/) — read it before scraping; it front-loads the judgment so a scrape (if you still need one to *see* current examples or extract tokens) is cheaper and targeted. Notes exist for: navbars ([`patterns/navbars.md`](../principles/patterns/navbars.md)), CTAs ([`patterns/ctas.md`](../principles/patterns/ctas.md)).
+6. **Do not commit scraped output into this repo.** Fetch at build time and use it in the project. This keeps the library small and sidesteps copyright on other people's designs. Distilled *pattern notes* (our own words) are the only gallery-derived thing that belongs in-repo — see [`../principles/patterns/`](../principles/patterns/).
 
 ## Dispatch table
 
@@ -21,8 +23,8 @@
 | Overall site look, "what good looks like", award-tier sites | craftwork.design/curated/websites · landing.love | scrape | Broad taste. Scrape index → pick 2–3 → `design-dna` them. |
 | Landing page: hero, structure, section flow | landing.love · saaspo.com | scrape | landing.love = landing-page focused; saaspo = SaaS pages. |
 | SaaS marketing site patterns (pricing, features, onboarding pages) | saaspo.com | scrape | Browse by page-type / category. |
-| Navbar / navigation / header / menu | navbar.gallery | scrape | Category subpaths: `/type/static`, `/type/dropdowns`, `/type/mega-menu`, `/type/side-bar`, `/type/search-bar`, `/type/announcement`, `/type/full-screen`, `/type/breadcrumbs`. Paginate with `?d25fafcb_page=N` or use `scrolls`. |
-| CTA / conversion section / button copy + layout | cta.gallery | scrape | Call-to-action patterns. |
+| Navbar / navigation / header / menu | [`../principles/patterns/navbars.md`](../principles/patterns/navbars.md) → navbar.gallery | note, then scrape | **Read the note first.** Type subpaths: `/type/static`, `/type/dropdowns`, `/type/mega-menu`, `/type/side-bar`, `/type/search-bar`, `/type/announcement`, `/type/full-screen`, `/type/breadcrumbs`. Paginate with `?<token>_page=N` — the token is **dynamic**, read it off the "Load more" link in the scraped markdown (don't hardcode); or use `scrolls`. |
+| CTA / conversion section / button copy + layout | [`../principles/patterns/ctas.md`](../principles/patterns/ctas.md) → cta.gallery | note, then scrape | **Read the note first.** Categories: `/categories/button`, `/call-to-buy`, `/download`, `/form`, `/modal-pop-up`, `/navigation`, `/newsletter`, `/pricing`. Entries at `/cta/<slug>`; copy tips at `/cta-tips`. Framer-hosted. |
 | Branding, rebrand, visual identity, logo systems | rebrand.gallery | scrape | Identity-level inspiration, not page layout. |
 | Real-world UI styles by aesthetic (screenshots of shipped UI) | styles.refero.design | scrape | Style-tagged UI screenshots. Prefer `screenshot` format here. |
 | Component patterns: naming, variants, states, anatomy (cross–design-system) | component.gallery | scrape | Reference for *how a component should behave/what to call it*, not visual flair. |
