@@ -110,7 +110,7 @@ Converge in 1–2 rounds. Blend freely on request.
 
 ## Phase 7 — Lock & hand off
 
-On approval, write **`brief.md` into the *project* directory** (not this repo) containing:
+On approval, write **`brief.md` into the *project* directory** (not this repo), using the template at [`../templates/brief.md`](../templates/brief.md). It contains:
 - one-line purpose + audience + target feeling/action
 - the locked direction (name + description)
 - resolved tokens (palette, type, spacing, motion feel) — from design-dna if used
