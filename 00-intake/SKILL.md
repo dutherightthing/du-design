@@ -71,7 +71,9 @@ Rubric — how to turn a slider position into concrete choices (do this internal
 - **"Show me one thing you love the look of."** URL, screenshot, "like Stripe," a film title card — anything. If a URL/image: hand off to **design-dna** ([`../skills/README.md`](../skills/README.md)) to extract exact tokens (needs the browser to screenshot; falls back to pasted image / hex / verbal).
 - **"Anything you definitely *don't* want it to look like?"** Anti-references are often more useful and easier to give ("not corporate," "not childish").
 
-If he has nothing to point at, skip this and lean on Phase 2 + profile.
+- **If he *can't* point at something specific** (or you need more range than he gave), don't ask him to go find examples and don't guess blindly: pull candidates yourself. Go to [`../sources/ROUTER.md`](../sources/ROUTER.md), match the medium/element (landing page, navbar, SaaS site, identity…), retrieve a handful, and bring back the 2–3 strongest to react to. The router handles which source and how to fetch it.
+
+If he has nothing to point at and you've pulled nothing useful, skip this and lean on Phase 2 + profile.
 
 ## Phase 4 — Constraints (only what applies; pre-fill from profile)
 

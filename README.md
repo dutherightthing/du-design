@@ -37,11 +37,14 @@ du-design/
 ├── your-profile.md        ← Jerry's standing preferences (grows over time)
 ├── decisions-log.md       ← dated record of what shipped and why
 ├── 00-intake/             ← ⭐ the discovery/interview skill — run first
-├── principles/            ← cross-project rules by medium
+├── principles/            ← cross-project rules by medium (+ patterns/ — distilled component notes)
 ├── skills/                ← deeper skills (taste, design-dna, motion, decks)
 ├── toolbelt/              ← index cards for code libraries (when to use what)
+├── sources/               ← router: which external source to pull from + how to retrieve it
 └── references/            ← moodboards + annotated past work (taste inputs)
 ```
+
+**`sources/` vs `references/`:** `references/` is Jerry's *own* curated taste (his moodboards, his shipped work). `sources/` is the map of *external* places to pull from — inspiration galleries, component/icon libraries — with a dispatch table so an agent picks the right one automatically ([`sources/ROUTER.md`](sources/ROUTER.md)).
 
 ## Using it — just point an agent at this folder
 
