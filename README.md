@@ -47,6 +47,12 @@ du-design/
 
 This repo is the single source of truth. Projects consume it — improvements here propagate everywhere.
 
-- **As skills (recommended):** `npx skills add <path-or-git-url-to-du-design>` installs the skills once into a project (`.claude/skills/`) or globally (`~/.claude/skills/`). They persist across sessions and across sequential agents — install once, done.
-- **As a submodule:** `git submodule add <git-url> design/` inside a project, then point the agent at `design/AGENTS.md`.
-- **Ad hoc:** clone it somewhere and tell the agent "read /path/to/du-design/AGENTS.md before starting."
+**Point the agent at this library** (choose one):
+- **As a submodule (recommended):** `git submodule add https://github.com/dutherightthing/du-design.git design/` inside a project, then tell the agent to read `design/AGENTS.md` first.
+- **Ad hoc:** clone it and tell the agent "read /path/to/du-design/AGENTS.md before starting."
+
+**Then install the referenced external skills, per project** (the chosen approach — always current, one setup step per new project):
+```bash
+npx skills add Leonxlnx/taste-skill zanwei/design-dna LottieFiles/motion-design-skill alchaincyf/huashu-design
+```
+These install into `.claude/skills/` (or `~/.claude/skills/` for all projects) and persist across sessions and sequential agents. The HyperFrames / motion skills are already present in Jerry's environment. See [`skills/README.md`](skills/README.md).
