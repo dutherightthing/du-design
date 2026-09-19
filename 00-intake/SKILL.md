@@ -125,7 +125,11 @@ Then hand off to the build skills / toolbelt. Build agents read `brief.md` inste
 At project end, ask 1–2 quick questions:
 > "We shipped Direction A but with a warmer accent than I first proposed, and you cut the intro. Want me to remember (a) you lean warm even on 'energetic/technical' briefs, and (b) you like teasers to open on the product, not a title?"
 
-**Only after he confirms**, append to [`../your-profile.md`](../your-profile.md) (as a preference) and a dated line to [`../decisions-log.md`](../decisions-log.md). Keep entries short and human-readable. Never write an unconfirmed guess.
+Then apply the profile governance (see [`../your-profile.md`](../your-profile.md) → "Governance"):
+- **Always** append a short dated block for this project to [`../decisions-log.md`](../decisions-log.md). This is the default home for what happened.
+- **Only** write to [`../your-profile.md`](../your-profile.md) if it's a *standing rule Jerry stated* OR a *pattern seen across 2+ projects* — and he confirms. A single project's taste stays in the log, not the profile. This is what keeps one project from swaying the profile.
+- Phrase profile entries as tendencies with room, not absolutes. Keep them to ~one line. Never write an unconfirmed guess.
+- If the profile is getting long or repetitive, offer a quick consolidation pass (merge/prune) instead of piling on.
 
 ---
 

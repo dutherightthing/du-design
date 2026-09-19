@@ -1,46 +1,40 @@
 # Skills
 
-Deeper capabilities beyond the principles files. These are **Agent Skills** (SKILL.md format) that we adapt/reference from best-in-class open-source repos. We reference them by install command rather than vendoring copies, so they stay current — except where we fork one to bend it to Jerry's taste.
+Deeper capabilities beyond the principles files. **These skills are vendored into this repo** (their knowledge, as markdown) so you never have to install anything — pointing an agent at `du-design` is enough. Read the relevant `SKILL.md` directly.
 
-Install any of these into a project (once) with the skills CLI; they then persist across sessions and agents:
-
-```bash
-npx skills add <github-repo>
-```
+> Only the *knowledge* (SKILL.md + reference markdown) is vendored. Heavy demo media, scripts, and image assets were intentionally left in the upstream repos to keep this light — see each folder's `UPSTREAM.md` for the source and how to grab those if ever needed.
 
 ## The roster
 
-### taste — anti-slop enforcement
-- **Repo:** `Leonxlnx/taste-skill`
-- **Use for:** run against any UI/graphic output to stop generic, boring, "AI slop" results. Encodes layout variance, spacing/type hierarchy, and quality gates. Includes aesthetic variants (soft, brutalist, minimalist).
-- **When:** any web/UI/graphic build, especially if output is drifting toward the default template.
-- **Install:** `npx skills add Leonxlnx/taste-skill`
+### `taste/` — anti-slop enforcement
+- **Upstream:** `Leonxlnx/taste-skill`
+- **Use for:** run against any UI/graphic output to stop generic, boring "AI slop." Encodes layout variance, spacing/type hierarchy, quality gates.
+- **Files:** [`taste/taste-skill/SKILL.md`](taste/taste-skill/SKILL.md) (primary), plus aesthetic variants: [`minimalist-skill`](taste/minimalist-skill/SKILL.md), [`brutalist-skill`](taste/brutalist-skill/SKILL.md), [`soft-skill`](taste/soft-skill/SKILL.md).
+- **When:** any web/UI/graphic build, especially if output drifts toward the default template.
 
-### design-dna — steal a look
-- **Repo:** `zanwei/design-dna`
-- **Use for:** turning a reference (URL, screenshot, image) into measured tokens — color, type, spacing, shape, motion feel — as portable JSON, then reproducing that aesthetic in a new build. Three phases: structure → analyze → generate.
-- **Accuracy:** needs to *see* the reference. This environment has a browser pane — navigate + screenshot the URL, then analyze. **Fallback** if no browser / site blocks: paste a screenshot, or give a hex/verbal description (looser match). Its `scripts/` do deterministic color measurement.
-- **No external agent or data API required.** (Orthogonal/enrichment APIs don't help design extraction — skip them here.) Optional generate-time booster: an up-to-date-docs MCP for correct library code, with fallback to model knowledge.
-- **When:** Jerry says "make it feel like X" or points at something he loves (intake Phase 3).
-- **Install:** `npx skills add zanwei/design-dna`
+### `design-dna/` — steal a look
+- **Upstream:** `zanwei/design-dna`
+- **Use for:** turning a reference (URL, screenshot, image) into measured tokens — color, type, spacing, shape, motion feel — then reproducing that aesthetic. Read [`design-dna/SKILL.md`](design-dna/SKILL.md) + [`references/schema.md`](design-dna/references/schema.md), [`references/generation-guide.md`](design-dna/references/generation-guide.md).
+- **Accuracy:** needs to *see* the reference. This environment has a browser pane — navigate + screenshot the URL, then analyze. **Fallback:** paste a screenshot, or give a hex/verbal description. (The upstream `scripts/` do deterministic color measurement — left upstream; use only if you need exact-hex precision.)
+- **No external agent or data API required.**
+- **When:** Jerry says "make it feel like X" (intake Phase 3).
 
-### motion-design — motion direction (philosophy-first)
-- **Repo:** `LottieFiles/motion-design-skill`
-- **Use for:** strategic motion direction — timing, easing, choreography, emotion-to-motion, narrative — before touching code. Engine-agnostic (CSS, GSAP, Lottie, HyperFrames, Framer Motion). This is the biggest lever on motion *quality*.
-- **When:** any video/animation or notable micro-interaction work. Pairs with [`../principles/motion.md`](../principles/motion.md).
-- **Install:** `npx skills add LottieFiles/motion-design-skill`
+### `motion-design/` — motion direction (philosophy-first)
+- **Upstream:** `LottieFiles/motion-design-skill`
+- **Use for:** strategic motion direction — timing, easing, choreography, emotion-to-motion, narrative — before code. Engine-agnostic. The biggest lever on motion *quality*. Start at [`motion-design/SKILL.md`](motion-design/SKILL.md); deep dives in `director/`, recipes in `patterns/`, lookups in `reference/`.
+- **When:** any video/animation or notable micro-interaction. Pairs with [`../principles/motion.md`](../principles/motion.md).
 
-### decks — presentation generation
-- **Repo:** `alchaincyf/huashu-design`
-- **Use for:** generating high-fidelity decks (HTML + editable PPTX export), interactive prototypes, infographics, and design critiques. Has a "brand asset protocol" that anchors output to real brand colors/type instead of guesses.
+### `decks/` — presentation generation
+- **Upstream:** `alchaincyf/huashu-design`
+- **Use for:** high-fidelity decks (HTML + editable PPTX), prototypes, infographics, critiques. Has a "brand asset protocol" that anchors output to real brand colors/type. Start at [`decks/SKILL.md`](decks/SKILL.md); many `references/` (slide-decks, typography, animation, brand-asset-protocol, critique-guide…).
+- **Note:** some references assume upstream `assets/`/`scripts/` (render pipeline, PPTX export) that were left upstream. The *design knowledge* is all here; if you need the actual export tooling, see [`decks/UPSTREAM.md`](decks/UPSTREAM.md).
 - **When:** slide decks and pitch material. Pairs with [`../principles/slides.md`](../principles/slides.md).
-- **Install:** `npx skills add alchaincyf/huashu-design`
 
-## Also available in this environment (not installed here)
-Depending on the agent/host, these may already be present and are worth using:
-- **`dataviz`** — chart/graph/dashboard color and chart-type rules. Use for any data visualization (esp. in decks).
-- **`artifact-design` / `artifact-diagramming`** — design fundamentals for building Claude Artifacts and diagrams.
-- **HyperFrames skill family** (`hyperframes`, `hyperframes-animation`, `hyperframes-creative`, etc.) — the default video/motion engine; deep and already wired in. See [`../toolbelt/hyperframes.md`](../toolbelt/hyperframes.md).
+## Also available in this environment (not vendored)
+Depending on the agent/host these may already be present:
+- **`dataviz`** — chart/graph/dashboard color and chart-type rules.
+- **`artifact-design` / `artifact-diagramming`** — fundamentals for Claude Artifacts and diagrams.
+- **HyperFrames skill family** — the default video/motion engine, already wired in. See [`../toolbelt/hyperframes.md`](../toolbelt/hyperframes.md).
 
-## Notes on forking
-If we adapt a skill to Jerry's taste (e.g. bake his defaults into `taste`), fork it into a subfolder here (e.g. `skills/taste/`) and note the upstream + what we changed, so we can re-sync later.
+## Keeping vendored skills fresh
+They're a point-in-time copy. To re-sync one, re-pull its upstream (in each folder's `UPSTREAM.md`) and copy the markdown back over. No rush — design fundamentals don't churn fast.

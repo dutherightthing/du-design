@@ -29,7 +29,7 @@ Read the relevant file(s) in [`principles/`](principles/):
 - Slide decks: [`slides.md`](principles/slides.md)
 
 ### 4. Reach for deeper skills as needed
-See [`skills/README.md`](skills/README.md). Highlights:
+These are **vendored into this repo** — no install needed, just read the relevant `SKILL.md` under [`skills/`](skills/). See [`skills/README.md`](skills/README.md). Highlights:
 - **Taste enforcement** — run against any UI/graphic output to kill generic "slop."
 - **design-dna** — when Jerry points at a reference ("make it feel like X"), extract its tokens and reproduce them. Needs a browser to screenshot a URL (this environment has one); falls back to pasted images/hex.
 - **motion-design** — philosophy-first motion direction; always relevant for video/animation and micro-interactions. Quality comes from *these principles*, not the engine.

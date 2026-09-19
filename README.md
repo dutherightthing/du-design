@@ -43,16 +43,16 @@ du-design/
 └── references/            ← moodboards + annotated past work (taste inputs)
 ```
 
-## Installing into a project
+## Using it — just point an agent at this folder
 
-This repo is the single source of truth. Projects consume it — improvements here propagate everywhere.
+**No installs, no commands.** Everything the agent needs — the router, the intake skill, the principles, and the vendored design skills (taste, design-dna, motion-design, decks) — lives in this repo as plain markdown. To use it, just say:
 
-**Point the agent at this library** (choose one):
-- **As a submodule (recommended):** `git submodule add https://github.com/dutherightthing/du-design.git design/` inside a project, then tell the agent to read `design/AGENTS.md` first.
-- **Ad hoc:** clone it and tell the agent "read /path/to/du-design/AGENTS.md before starting."
+> "Read `du-design/AGENTS.md` (or the GitHub repo) before starting, and follow it."
 
-**Then install the referenced external skills, per project** (the chosen approach — always current, one setup step per new project):
-```bash
-npx skills add Leonxlnx/taste-skill zanwei/design-dna LottieFiles/motion-design-skill alchaincyf/huashu-design
-```
-These install into `.claude/skills/` (or `~/.claude/skills/` for all projects) and persist across sessions and sequential agents. The HyperFrames / motion skills are already present in Jerry's environment. See [`skills/README.md`](skills/README.md).
+That's the whole setup. The agent reads `AGENTS.md`, which routes it to everything else on demand (progressive disclosure — it only opens the files it needs).
+
+Ways to make the folder available to a project, if you want a local copy alongside your work (optional — an agent with the repo link doesn't need this):
+- Clone it: `git clone https://github.com/dutherightthing/du-design.git`, then point the agent at the local path.
+- Or add it to a project as a submodule under `design/`.
+
+The HyperFrames / motion engine skills are already present in Jerry's environment. The vendored skills are point-in-time copies — see [`skills/README.md`](skills/README.md) for how to refresh them (rarely needed).

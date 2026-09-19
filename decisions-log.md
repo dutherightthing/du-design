@@ -1,6 +1,6 @@
 # Decisions log
 
-A dated record of what shipped and why — the raw history behind [`your-profile.md`](your-profile.md). Append one short entry per project at capture time (intake Phase 8). Newest at top.
+The raw, append-only history of what shipped and why — the record behind [`your-profile.md`](your-profile.md). **This is where per-project details live, so the profile can stay lean.** Append one short block per project at capture time (intake Phase 8); newest at top. Keep each entry brief — full artifacts (briefs, mockups, code) stay in each project's own repo, not here. Log contradictions/exceptions here too; they only change the profile if they recur.
 
 Format:
 ```

@@ -1,6 +1,20 @@
 # Jerry's design profile
 
-Standing preferences, learned over time. The intake skill reads this **first** and must not re-ask what's settled here. Only add a preference after Jerry has **confirmed** it (see intake Phase 8). Keep entries short and human-readable; prune anything proven wrong.
+Jerry's **durable, cross-project** design preferences. The intake skill reads this **first** and must not re-ask what's settled here.
+
+This file is deliberately **lean** — it is a distilled summary, NOT a project log. Per-project history lives in [`decisions-log.md`](decisions-log.md); full project artifacts (briefs, mockups) stay in each project's own repo.
+
+## Governance — how this file is allowed to change (read before writing to it)
+
+1. **One project = a data point, not a rule.** A single project's choices are logged in `decisions-log.md`. They do **not** get written here. This is what stops any one project from swaying the profile.
+2. **Promote to this file only when EITHER:**
+   - Jerry states a **standing/general rule** explicitly ("always...", "I never want..."), OR
+   - the **same signal shows up across 2+ projects** (a real pattern),
+   AND Jerry confirms it at capture time.
+3. **Phrase preferences as tendencies with room, not absolutes** — "leans warm, especially on calm briefs," not "always use warm." Absolutes only when Jerry stated one.
+4. **Contradictions don't flip the profile.** If a new project contradicts an entry, log it as an *exception* in `decisions-log.md`. Only revise the profile entry if the contradiction recurs (back to rule #2).
+5. **Stay lean.** Keep every entry to ~one line. If a section grows past a handful of lines or entries start overlapping, run a **consolidation pass**: merge duplicates, generalize specifics, delete stale/contradicted items. Target: this whole file stays skimmable in well under a screen.
+6. **Human-readable and prunable.** No raw dumps. Jerry can delete any entry; treat these as living, not sacred.
 
 _Last updated: 2026-09-18 (seeded from initial planning conversation)._
 
