@@ -36,6 +36,16 @@
 
 If a need genuinely isn't covered here, *then* fall back to a web search — and consider adding the good source you find as a new row (see Maintenance).
 
+## Free vs. paid / login-gated (verified 2026-09-19)
+
+Some sources gate their best content behind login or payment. Retrieval still works (scrape/install), but know what you can actually use:
+
+- **Free, no login** — the inspiration galleries (navbar.gallery, cta.gallery, and by design the others), and **component.gallery** (a free reference collection of components from real design systems — for *naming & patterns*, not ready-to-use code; no paywall).
+- **Freemium (free tier is enough; paid behind login)** — **Hugeicons**: 6,000+ Stroke Rounded icons are **MIT** (free, redistributable); 60k+ Pro icons are paid per-seat ($99/yr or $1,197 lifetime). Default to the free set. See [`../toolbelt/hugeicons.md`](../toolbelt/hugeicons.md). **Aceternity UI**: single Components are free copy-paste; Blocks + Templates need a paid All-Access account ($199 lifetime / $169 yr). Don't assume a Block/Template is pullable. See [`../toolbelt/aceternity.md`](../toolbelt/aceternity.md).
+- **Fully free/open** — **SuperTinyIcons** (MIT, GitHub). See [`../toolbelt/super-tiny-icons.md`](../toolbelt/super-tiny-icons.md).
+
+When scraping a freemium/gallery source, you're pulling the *public* index/preview — enough to shortlist and screenshot. Don't build a login/scrape flow to reach gated content; use the free tier, or install the paid library into the project only if Jerry has an account.
+
 ## Orthogonal retrieval recipe (for `scrape` rows)
 
 The blocked domains are reachable through Orthogonal's `ScrapeGraphAI` API (its endpoint is allow-listed, so it tunnels past the egress block). Verified working.

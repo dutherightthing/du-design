@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-09-19 — verified license/pricing facts (meta)
+- Verified the three "believed, unverified" flags by scraping the live pages (Orthogonal, ~$0.025 total). Results:
+  - **Hugeicons**: earlier guess was **wrong** — free tier is **MIT** (6,000+ Stroke Rounded, `@hugeicons/core-free-icons`, redistributable, no attribution-in-UI), not "CC-style/attribution." Pro = 60k+ icons, paid **per-seat** ($99/yr or $1,197 lifetime). Card corrected; install line updated to current `@hugeicons/*` packaging.
+  - **Aceternity UI**: earlier "free/open MIT" was **overstated** — the published licence page governs *paid Pro* items (Blocks/Templates, $199 lifetime / $169 yr / $1590 team, login required); free single Components are copy-paste but carry **no explicit MIT/open-source license** on-site. Card corrected to stop calling them MIT.
+  - **component.gallery**: fully **free, no login**; it's a *reference* collection of components from real design systems (naming/patterns), explicitly **not** ready-to-use code. No correction needed; noted as free.
+- Confirmed Jerry's free/paid hunch and added a "Free vs. paid / login-gated" section to the router so agents default to free tiers and don't try to reach gated content.
+
 ## 2026-09-19 — distilled pattern notes, POC (meta)
 - Added `principles/patterns/` with `navbars.md` + `ctas.md`, distilled from real navbar.gallery + cta.gallery scrapes (~$0.01 total via Orthogonal). Taxonomy/categories are the sources'; the judgment (when-to-use, anti-patterns, exemplars) is ours. Router now routes navbar/CTA needs to the note first, scrape second ("note, then scrape").
 - POC finding: a distilled note beats a live scrape for *judgment* (which variant, what's generic, what to avoid) at zero cost/context; the scrape still wins for *seeing* current examples + token extraction. Notes carry a distill date + the source subpath so they can be refreshed when exemplars go stale. So the two are complementary, not either/or — the note makes any follow-up scrape cheaper and targeted.

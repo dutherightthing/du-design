@@ -18,4 +18,8 @@ npx shadcn@latest add "https://ui.aceternity.com/registry/<component>.json"
 
 **Pairs with:** [shadcn/ui](shadcn.md) for structural primitives, [react-bits](react-bits.md) for smaller animated accents, [GSAP](gsap.md)/[Lenis](lenis.md) for custom/scroll motion. Tone guidance in [`../principles/motion.md`](../principles/motion.md).
 
-**License:** free / open components (MIT). *Believed accurate — re-verify on the site's license/pricing page, since it wasn't reachable to confirm at vendoring time.*
+**Free vs paid (verified 2026-09-19):** two tiers, and Jerry's hunch is right — some content is free, some is behind login/payment.
+- **Free ($0):** the named single **Components** (Aurora Background, Bento Grid, Lamp Effect, Timeline, etc.) — copy-paste, no account. This is what an agent reaches for.
+- **Paid (All-Access, login required):** 200+ premium **Blocks** (multi-section: hero/CTA/pricing sections) + 12+ full **Templates**. Pricing: **Lifetime $199 one-time** (most popular), Annual $169/yr, Team $1590. Don't assume you can pull a Block/Template — those need a purchased account.
+
+**License (verified 2026-09-19):** The published [licence page](https://ui.aceternity.com/licence) is the **Aceternity License** governing *paid Pro* items: use in unlimited personal/commercial end products, modify freely, but **no** redistributing/reselling the source and **no** building competing templates/themes. Some items bundle third-party components under their own OSS/CC licenses (flagged per item). ⚠️ **Correction from the earlier draft:** the site does **not** publish an explicit MIT/open-source license for the *free* components — they're free to copy-paste and use, but "MIT" was an unverified guess. Treat the free components as free-to-use, check the individual component page for any third-party license, and don't relabel them MIT in a project.
