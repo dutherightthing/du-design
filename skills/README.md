@@ -24,6 +24,12 @@ Deeper capabilities beyond the principles files. **These skills are vendored int
 - **Use for:** strategic motion direction — timing, easing, choreography, emotion-to-motion, narrative — before code. Engine-agnostic. The biggest lever on motion *quality*. Start at [`motion-design/SKILL.md`](motion-design/SKILL.md); deep dives in `director/`, recipes in `patterns/`, lookups in `reference/`.
 - **When:** any video/animation or notable micro-interaction. Pairs with [`../principles/motion.md`](../principles/motion.md).
 
+### `emil/` — design-engineering & motion taste
+- **Upstream:** `emilkowalski/skills` (MIT — Emil Kowalski, ex-Vercel/Linear).
+- **Use for:** the craft layer — UI polish, component decisions, and *correct* animation (curves, durations, what to animate) plus a rubric to grade motion against. This is taste for interaction, complementary to `taste/` (anti-slop) and `motion-design/` (choreography).
+- **Files:** [`emil/emil-design-eng/SKILL.md`](emil/emil-design-eng/SKILL.md) (philosophy), [`emil/animate/SKILL.md`](emil/animate/SKILL.md) + [`RECIPES.md`](emil/animate/RECIPES.md) (build), [`emil/review-animations/SKILL.md`](emil/review-animations/SKILL.md) + [`STANDARDS.md`](emil/review-animations/STANDARDS.md) (grade).
+- **When:** any web micro-interaction or animation; run `review-animations` before calling motion done. The other 10 skills in the suite were left upstream — see [`emil/UPSTREAM.md`](emil/UPSTREAM.md).
+
 ### `decks/` — presentation generation
 - **Upstream:** `alchaincyf/huashu-design`
 - **Use for:** high-fidelity decks (HTML + editable PPTX), prototypes, infographics, critiques. Has a "brand asset protocol" that anchors output to real brand colors/type. Start at [`decks/SKILL.md`](decks/SKILL.md); many `references/` (slide-decks, typography, animation, brand-asset-protocol, critique-guide…).

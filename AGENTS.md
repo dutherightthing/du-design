@@ -33,6 +33,7 @@ These are **vendored into this repo** — no install needed, just read the relev
 - **Taste enforcement** — run against any UI/graphic output to kill generic "slop."
 - **design-dna** — when Jerry points at a reference ("make it feel like X"), extract its tokens and reproduce them. Needs a browser to screenshot a URL (this environment has one); falls back to pasted images/hex.
 - **motion-design** — philosophy-first motion direction; always relevant for video/animation and micro-interactions. Quality comes from *these principles*, not the engine.
+- **emil** — design-engineering craft + correct animation (curves, durations) and a rubric to grade motion; run `review-animations` before calling any interaction done.
 - **decks** — presentation generation.
 
 ### 5. Pull tools from the toolbelt
@@ -40,6 +41,9 @@ See [`toolbelt/`](toolbelt/). These are *index cards* (what a tool is for, when 
 - **Video / motion graphics →** HyperFrames (default). Remotion only if the project is already React and needs programmatic/data-driven video.
 - **Interactive website animation →** GSAP (+ Lenis for smooth scroll), three.js for 3D. NOT for producing video files.
 - **UI components →** shadcn/ui (structure), react-bits (animated bits).
+
+### 5b. Need external inspiration or assets? Route, don't hunt.
+When you need a reference or asset — a navbar to riff on, landing-page structure, a color/identity direction, icons, or motion taste — **go to [`sources/ROUTER.md`](sources/ROUTER.md) and match the need to a row.** It tells you the exact source and how to retrieve it (some inspiration sites are blocked by the network policy and must be pulled via the Orthogonal scrape recipe the router documents). Don't free-search the web when a row covers the need, and don't wait for Jerry to name a site. This is deliberately deterministic: spend your effort on *executing* the brief, not on finding where to look.
 
 ### 6. Build the chosen direction
 Build from the locked `brief.md` and the winning mockup — the mockup is the *starting asset*, not a throwaway. Re-run taste enforcement before calling it done.
