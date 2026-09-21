@@ -12,6 +12,11 @@ Format:
 
 ---
 
+## 2026-09-21 — orth-moneymaker wheel spinner, round 3 (website)
+- Chosen direction: removed the wheel's colored border ring entirely, gave the 8 wedges 8 distinct colors (no alternating 2-tone pattern), and stripped every thick colored border from the surrounding UI (button, hub, panel, result card) in favor of soft shadows and solid white/neutral fills — closer to Apple/Claude chrome, with the wheel itself as the colorful focal point.
+- What changed from the first proposal: round 2's "restraint reads as quality" fix (from color.md) over-applied minimalism to the wheel's own color variety, cutting it down to a 2-tone alternating pattern. Jerry's correction: restraint belongs on the UI chrome (borders, glow, gradients) — the wheel itself is the fun/colorful centerpiece and should look like the original multi-color reference images he'd shared, not a muted 2-tone pie.
+- Preference learned (if any): candidate — "a colorful decorative focal element (the wheel) and the minimal UI chrome around it (buttons, panels, borders) are different design surfaces; color.md's restraint principle governs the chrome, not necessarily the focal element." Needs a second project to confirm before promoting; logged here so future work on a similarly-structured project (bold focal piece + minimal shell) doesn't over-apply restraint to the wrong layer.
+
 ## 2026-09-21 — orth-moneymaker wheel spinner, round 2 (website)
 - Chosen direction: "Cobalt Premium" — near-black background, cobalt-blue/near-black alternating wedges, one blue accent reserved for rim/seams/button/title. Picked by Jerry from 3 options after he called the gold-casino-roulette v1 "stupid and cheap."
 - What changed from the first proposal: v1 spent the gold accent everywhere at once (rim, seams, glowing button, glowing title, poker-chip hub) — the opposite of color.md's "accent earns attention because it's rare." Dispatched a subagent to research real premium dark-UI references (DraftKings/Linear/Vercel-style) instead of guessing a second palette myself, then used AskUserQuestion to let Jerry pick from 3 named, hex-specified options before touching code.
