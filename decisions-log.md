@@ -12,6 +12,11 @@ Format:
 
 ---
 
+## 2026-09-21 — orth-moneymaker wheel spinner (website)
+- Chosen direction: casino/poker roulette look — alternating red/black wedges with gold hairline seams and rim, poker-chip center hub, gold-gradient glowing title and spin button, dark green felt background. Replaced an initial pastel flat-color wheel after Jerry called it out as too soft.
+- What changed from the first proposal: v1 used abstract single-color icon-free wedges with muted pastel colors and made-up category names. Jerry wanted real, recognizable brand logos (Meta, TikTok, Instagram, Amazon, Google Maps, Gmail, LinkedIn, Shopify — fetched from Wikimedia Commons) on every segment, two-word labels matching real money-making plays, and saturated casino-vivid colors, not pastel.
+- Preference learned (if any): not yet promoted — single project. Candidate: "for playful/marketing-facing tools aimed at a social audience, prefer real recognizable brand logos over abstract icons, and saturated/thematic color palettes over soft pastels." Needs a second project to confirm before promoting to your-profile.md.
+
 ## 2026-09-18 — du-design library itself (meta)
 - Set up the central design library: router (AGENTS.md), intake skill, principles (universal/slides/motion/web/typography/color), toolbelt cards, skills index, profile.
 - Decisions: skills-as-markdown format; HyperFrames as default video engine; design-dna uses the browser for reference extraction with fallbacks; no data/enrichment APIs for design; library learns via profile + this log.
