@@ -12,6 +12,11 @@ Format:
 
 ---
 
+## 2026-09-21 — orth-moneymaker wheel spinner, round 2 (website)
+- Chosen direction: "Cobalt Premium" — near-black background, cobalt-blue/near-black alternating wedges, one blue accent reserved for rim/seams/button/title. Picked by Jerry from 3 options after he called the gold-casino-roulette v1 "stupid and cheap."
+- What changed from the first proposal: v1 spent the gold accent everywhere at once (rim, seams, glowing button, glowing title, poker-chip hub) — the opposite of color.md's "accent earns attention because it's rare." Dispatched a subagent to research real premium dark-UI references (DraftKings/Linear/Vercel-style) instead of guessing a second palette myself, then used AskUserQuestion to let Jerry pick from 3 named, hex-specified options before touching code.
+- Preference learned (if any): confirms the existing process rule (universal.md: "propose directions, don't guess one") rather than adding a new one — this is the first project where skipping it drew a direct complaint, worth watching if it recurs. Not promoted as a new item.
+
 ## 2026-09-21 — orth-moneymaker wheel spinner (website)
 - Chosen direction: casino/poker roulette look — alternating red/black wedges with gold hairline seams and rim, poker-chip center hub, gold-gradient glowing title and spin button, dark green felt background. Replaced an initial pastel flat-color wheel after Jerry called it out as too soft.
 - What changed from the first proposal: v1 used abstract single-color icon-free wedges with muted pastel colors and made-up category names. Jerry wanted real, recognizable brand logos (Meta, TikTok, Instagram, Amazon, Google Maps, Gmail, LinkedIn, Shopify — fetched from Wikimedia Commons) on every segment, two-word labels matching real money-making plays, and saturated casino-vivid colors, not pastel.
