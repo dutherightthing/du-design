@@ -1,3 +1,13 @@
 node_modules/
 .DS_Store
 *.log
+
+# --- secrets / env files (secret hygiene) ---
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.pem
+*.key
+secrets.json

@@ -12,6 +12,11 @@ Format:
 
 ---
 
+## 2026-09-21 — orth-moneymaker wheel spinner, round 4 (website)
+- Chosen direction: added a light theme (same chrome, palette flips via CSS variables) and a generic icon library for user-created segments — the 8 fetched brand logos stay as-is, but new generic options (dollar, briefcase, star, etc.) are a plain emoji centered on a neutral badge rather than sourced/hand-drawn art.
+- What changed from the first proposal: round 3 established "the wheel is the colorful focal element, restraint governs the chrome around it, not the wheel itself" — this round's light theme confirms that split cleanly: only chrome tokens (bg/card/ink/surface) flip with theme, the wheel's saturated per-segment colors stay theme-invariant. Also: the earlier hard rule about brand logos ("must be the real, recognizable mark," which cost 3 failed attempts on Shopify) doesn't apply to generic/non-brand icon needs — an emoji badge is legible and sufficient there, no equivalent bar to clear.
+- Preference learned (if any): candidate — "a real/pixel-perfect logo is only required for actual brand marks; generic conceptual icons (dollar sign, star, briefcase) can be a plain emoji-on-badge, no asset hunt needed." One project so far; needs a second to confirm before promoting. The chrome-vs-focal-element split (round 3) got a second data point here (light theme) but still needs a second *project*, not just a second round, to promote per the gate.
+
 ## 2026-09-21 — orth-moneymaker wheel spinner, round 3 (website)
 - Chosen direction: removed the wheel's colored border ring entirely, gave the 8 wedges 8 distinct colors (no alternating 2-tone pattern), and stripped every thick colored border from the surrounding UI (button, hub, panel, result card) in favor of soft shadows and solid white/neutral fills — closer to Apple/Claude chrome, with the wheel itself as the colorful focal point.
 - What changed from the first proposal: round 2's "restraint reads as quality" fix (from color.md) over-applied minimalism to the wheel's own color variety, cutting it down to a 2-tone alternating pattern. Jerry's correction: restraint belongs on the UI chrome (borders, glow, gradients) — the wheel itself is the fun/colorful centerpiece and should look like the original multi-color reference images he'd shared, not a muted 2-tone pie.
