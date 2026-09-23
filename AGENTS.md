@@ -6,6 +6,10 @@ You are working on a creative/visual project for Jerry. This file tells you how 
 
 **Do not jump straight to building.** A default agent's failure mode is to take a vague request and immediately produce one generic guess. That is exactly what this library exists to prevent. The sequence is always: **understand → propose directions → get a reaction → then build.**
 
+## Finding things in this library (read first)
+
+Don't browse the folders. Use the **`du-design` MCP**: `find("<need>")` → `read(id)` for library sections, `refs("<category>")` for live gallery sites. Add `brief` to `find` when you have one; Jev then reranks by project fit. No MCP? Run `python3 tools/du.py find "<need>"`. No shell? Read [`INDEX.md`](INDEX.md), then open only the line ranges you need. Setup: [`tools/README.md`](tools/README.md).
+
 ## Step-by-step
 
 ### 1. Read Jerry's profile first

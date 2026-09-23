@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "du-design": { "command": "python3", "args": ["tools/du.py", "serve"] }
+  }
+}

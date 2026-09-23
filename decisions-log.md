@@ -12,6 +12,11 @@ Format:
 
 ---
 
+## 2026-09-23 — du-design lookup MCP + INDEX.md (meta)
+- Built `tools/du.py`, a stdlib-only tool that works as an MCP server or from the shell. `find`/`read` return a single section instead of a whole file. `refs` searches a local cache of navbar.gallery, cta.gallery, landing.love and saaspo (gitignored `.cache/`). Jev reranks `find` results when a brief is passed and `TYPESAFE_API_KEY` is in `.env.local`. Also generated `INDEX.md`, a ~2K-token map with line ranges for big files.
+- Why: the repo is only ~280K tokens, but agents read whole files (taste-skill alone is ~22K) and re-scraped galleries every project. The real references live off-repo, so the cache matters more than the repo search.
+- Promoted to profile (Jerry confirmed): "real brand marks, not stand-ins" and "calm chrome, one loud focal element", each seen in moneymaker and jev-selector. Awwwards is left to the existing awwwards-mcp rather than rebuilt here.
+
 ## 2026-09-22 — Jev selector fluid API discovery (website)
 - Chosen direction: warm light search surface with real API marks behaving as a physics pile, then resolving into an upright comparison carousel and endpoint/code detail view.
 - What changed from the first proposal: removed masking, symmetry, generic icon tiles, duplicate marks, excessive force, rotated results, stale resize geometry, and lingering faded state; motion became one clear transition from discovery to comparison.

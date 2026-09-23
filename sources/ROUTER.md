@@ -4,6 +4,7 @@
 
 ## How to use this (the deterministic flow)
 
+0. **Try `refs("<need>")` first** (du-design MCP, or `python3 tools/du.py refs "<need>"`). It searches a local cache of navbar.gallery, cta.gallery, landing.love and saaspo by category, costs nothing, and returns live site URLs. Scrape (below) only when the cache has no hits or is stale.
 1. From the brief, name what you actually need right now (a navbar? a landing hero? a color/identity direction? an icon set? motion taste?).
 2. Find the matching row in the **dispatch table**. Match on the *Need* keywords.
 3. Retrieve by the row's **Access** method:
