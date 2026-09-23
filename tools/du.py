@@ -265,7 +265,7 @@ def env_key():
     for f in (".env.local", ".env"):
         p = ROOT / f
         if p.exists():
-            m = re.search(r"^TYPESAFE_API_KEY\s*=\s*['\"]?([^'\"\s]+)", p.read_text(), re.M)
+            m = re.search(r"^TYPESAFE_API_KEY[ \t]*=[ \t]*['\"]?([^'\"\s]+)", p.read_text(), re.M)
             if m:
                 return m.group(1)
 
