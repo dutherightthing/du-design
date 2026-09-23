@@ -16,7 +16,7 @@ This file is deliberately **lean** — it is a distilled summary, NOT a project 
 5. **Stay lean.** Keep every entry to ~one line. If a section grows past a handful of lines or entries start overlapping, run a **consolidation pass**: merge duplicates, generalize specifics, delete stale/contradicted items. Target: this whole file stays skimmable in well under a screen.
 6. **Human-readable and prunable.** No raw dumps. Jerry can delete any entry; treat these as living, not sacred.
 
-_Last updated: 2026-09-18 (seeded from initial planning conversation)._
+_Last updated: 2026-09-23 (promoted two aesthetic tendencies seen in orth-moneymaker + jev-selector)._
 
 ## About Jerry
 - Non-designer by training; strong instincts, judges design well **when he sees it**, but can't reliably name styles or specify a vision from a blank page. → Always propose options with mockups; don't ask him to articulate a look cold.
@@ -29,7 +29,8 @@ _Last updated: 2026-09-18 (seeded from initial planning conversation)._
 - Packaging preference for this library: **Agent Skills authored as readable markdown**, one central `du-design` repo, installed once per project.
 
 ## Aesthetic preferences
-- _(none confirmed yet — fill in as projects ship)_
+- **Real brand marks, not stand-ins.** When a brand/company appears, use its real, crisp logo — no generic icons, placeholders, or low-res favicons. Generic *concepts* (dollar, star) can be simple emoji/badges. _(moneymaker, jev-selector)_
+- **Calm chrome, one loud focal element.** Leans restrained on UI chrome (borders, panels, buttons) so one element — a colorful wheel, a physics pile — carries the energy. Restraint rules apply to the chrome, not the focal piece. _(moneymaker, jev-selector)_
 
 ## Dislikes / anti-patterns
 - Generic "AI slop" defaults (this whole library exists to avoid them).

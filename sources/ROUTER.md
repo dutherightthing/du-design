@@ -30,7 +30,7 @@
 | Component patterns: naming, variants, states, anatomy (cross–design-system) | component.gallery | scrape | Reference for *how a component should behave/what to call it*, not visual flair. |
 | Animated React components to drop in (heroes, backgrounds, text FX) | [`../toolbelt/aceternity.md`](../toolbelt/aceternity.md) · [`../toolbelt/react-bits.md`](../toolbelt/react-bits.md) | install | React + Tailwind + Motion. Seasoning, not the meal — see cards. |
 | UI icons (interface glyphs: arrows, settings, etc.) | [`../toolbelt/hugeicons.md`](../toolbelt/hugeicons.md) | install | Large set, free tier + pro. |
-| Brand / company / logo icons (GitHub, Google, X…) | [`../toolbelt/super-tiny-icons.md`](../toolbelt/super-tiny-icons.md) | install / direct | MIT, tiny SVGs. Fetchable straight from GitHub/CDN. |
+| Brand / company / logo icons (GitHub, Google, Shopify, X…) | Simple Icons → [`../toolbelt/super-tiny-icons.md`](../toolbelt/super-tiny-icons.md) → Wikimedia Commons | direct | Try in order. Simple Icons (3,000+ brands, CC0, single-color): `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/<slug>.svg` (verified 2026-09-23). SuperTinyIcons for full-color rounded marks. Wikimedia only as a last resort. Never ship a placeholder for a real brand. |
 | Motion & interaction taste; grade or fix animations | [`../skills/emil/`](../skills/emil/) · [`../skills/motion-design/`](../skills/motion-design/) | vendored | Read in-repo. `emil-design-eng` (philosophy), `animate` (curves/durations), `review-animations` (grading). |
 | "Make it feel like <a specific site/image>" | [`../skills/design-dna/`](../skills/design-dna/) | vendored | Extract tokens from a reference. Feed it a gallery pick or a URL Jerry names. |
 
@@ -50,7 +50,7 @@ When scraping a freemium/gallery source, you're pulling the *public* index/previ
 
 The blocked domains are reachable through Orthogonal's `ScrapeGraphAI` API (its endpoint is allow-listed, so it tunnels past the egress block). Verified working.
 
-**Tool:** `mcp__Orthogonal__use` → `api: "scrapegraphai"`, `path: "/api/scrape"`
+**Tool:** `mcp__orthogonal__use` → `api: "scrapegraphai"`, `path: "/api/scrape"`
 
 **Index / listing (default, cheapest — get names, links, tags):**
 ```json

@@ -12,6 +12,11 @@ Format:
 
 ---
 
+## 2026-09-22 — Jev selector fluid API discovery (website)
+- Chosen direction: warm light search surface with real API marks behaving as a physics pile, then resolving into an upright comparison carousel and endpoint/code detail view.
+- What changed from the first proposal: removed masking, symmetry, generic icon tiles, duplicate marks, excessive force, rotated results, stale resize geometry, and lingering faded state; motion became one clear transition from discovery to comparison.
+- Preference learned (if any): candidate — Jerry likes responsive, game-like object motion inside otherwise minimal product UI. One project only, so this is documented in `references/your-past-work/jev-selector-fluid-api-discovery.md` and not promoted to the standing profile.
+
 ## 2026-09-21 — orth-moneymaker wheel spinner, round 4 (website)
 - Chosen direction: added a light theme (same chrome, palette flips via CSS variables) and a generic icon library for user-created segments — the 8 fetched brand logos stay as-is, but new generic options (dollar, briefcase, star, etc.) are a plain emoji centered on a neutral badge rather than sourced/hand-drawn art.
 - What changed from the first proposal: round 3 established "the wheel is the colorful focal element, restraint governs the chrome around it, not the wheel itself" — this round's light theme confirms that split cleanly: only chrome tokens (bg/card/ink/surface) flip with theme, the wheel's saturated per-segment colors stay theme-invariant. Also: the earlier hard rule about brand logos ("must be the real, recognizable mark," which cost 3 failed attempts on Shopify) doesn't apply to generic/non-brand icon needs — an emoji badge is legible and sufficient there, no equivalent bar to clear.
