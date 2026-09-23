@@ -7,7 +7,7 @@ Otherwise pick a file below; for big files read only the line range you need.
 - `AGENTS.md` ~1.3k tok
 - `CLAUDE.md` ~0.1k tok
 - `README.md` ~1.0k tok
-- `decisions-log.md` ~2.7k tok
+- `decisions-log.md` ~2.8k tok
 - `principles/color.md` ~0.5k tok
 - `principles/motion.md` ~0.8k tok
 - `principles/patterns/README.md` ~0.4k tok

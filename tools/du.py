@@ -26,6 +26,8 @@ SOURCES = {
     "cta.gallery": ("https://www.cta.gallery", r"^https://www\.cta\.gallery/categories/[\w-]+$"),
     "landing.love": ("https://www.landing.love", r"^https://www\.landing\.love/(categories|collection|platform)/[\w-]+/$"),
     "saaspo": ("https://saaspo.com", r"^https://saaspo\.com/(industry|type|assets|page|style)/[\w-]+$"),
+    # MIT-licensed DESIGN.md files for ~74 real brands; plain GitHub fetch, free. Pattern None = not a scraped gallery.
+    "design-md": ("https://github.com/VoltAgent/awesome-design-md", None),
 }
 # Hosts that show up as links on gallery pages but are ads, socials, or assets, not sites.
 JUNK = re.compile(r"framer\.link|framerusercontent|twitter\.com|x\.com|bsky\.app|carbonads|buysellads|mobbin|dub\.sh|"
@@ -193,11 +195,41 @@ def refs_db():
     return c
 
 
+def get(url):
+    ctx = ssl.create_default_context(cafile="/etc/ssl/cert.pem" if os.path.exists("/etc/ssl/cert.pem") else None)
+    return urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "du-design"}), timeout=30,
+                                  context=ctx).read().decode()
+
+
+def design_md_rows(home):
+    """One row per brand: url = raw DESIGN.md (fetch it and drop into a project), tag = its style description."""
+    repo = home.split("github.com/")[1]
+    brands = [d["name"] for d in json.loads(get(f"https://api.github.com/repos/{repo}/contents/design-md")) if d["type"] == "dir"]
+    raw = lambda b: f"https://raw.githubusercontent.com/{repo}/main/design-md/{b}/DESIGN.md"
+
+    def one(b):
+        try:
+            m = re.search(r"^description:\s*(.+)$", get(raw(b)), re.M)
+            return (raw(b), b, "design-md", m.group(1).strip() if m else b, home)
+        except Exception:
+            return None
+
+    with ThreadPoolExecutor(8) as pool:
+        return [r for r in pool.map(one, brands) if r]
+
+
 def refresh(names=None, log=print):
     c = refs_db()
     cost = 0
     for name in names or SOURCES:
         home, pat = SOURCES[name]
+        if pat is None:
+            rows = design_md_rows(home)
+            c.execute("delete from refs where source=?", (name,))
+            c.executemany("insert or replace into refs values (?,?,?,?,?,?)", [r + (time.time(),) for r in rows])
+            c.commit()
+            log(f"{name}: {len(rows)} DESIGN.md files (free)")
+            continue
         host = re.sub(r"^https?://(www\.)?", "", home)
         md = scrape(home); cost += 1
         pages = sorted({re.sub(r"[?#].*$", "", u) for u in re.findall(r"\]\((https?://[^)\s]+)\)", md)
@@ -233,11 +265,11 @@ def refresh(names=None, log=print):
     log(f"~${cost * 0.005:.2f} spent ({cost} pages)")
 
 
-def refs(query, source=None, k=10):
+def refs(query, source=None, k=10, brief=None):
     if not REFS_DB.exists():
-        return {"error": "gallery cache is empty; run `python3 tools/du.py refresh` (~$0.75, a few minutes)"}
+        return {"error": "gallery cache is empty; run `python3 tools/du.py refresh` (~$0.85, ~7 minutes)"}
     c = refs_db()
-    words = re.findall(r"[a-z0-9]+", query.lower())
+    words = [w for w in re.findall(r"[a-z0-9]+", query.lower()) if len(w) > 2]
     rows = c.execute("select url, name, source, group_concat(tag, ', '), max(fetched) from refs "
                      + ("where source=? " if source else "") + "group by url",
                      (source,) if source else ()).fetchall()
@@ -247,14 +279,22 @@ def refs(query, source=None, k=10):
         hay = f"{name} {url}".lower()
         s = sum(2 * (w in tags) + (w in hay) for w in words)
         if s:
-            scored.append((s, f"{url}{' — ' + name if name else ''} [{src}: {tags}]"))
+            t = tags if len(tags) <= 280 else tags[:280].rsplit(" ", 1)[0] + "…"
+            scored.append((s, f"{url}{' — ' + name if name else ''} [{src}: {t}]"))
     scored.sort(key=lambda x: -x[0])
     if not scored:
-        tags = sorted({t for r in rows for t in r[3].split(", ")} - {"home"})
+        tags = sorted({t for r in rows if r[2] != "design-md" for t in r[3].split(", ")} - {"home"})
         return {"total": 0, "hint": "no match; retry with one of these tags", "tags": tags}
     age = (time.time() - max(r[4] for r in rows)) / 86400 if rows else None
     return {"cache_age_days": round(age, 1) if age is not None else None, "total": len(scored),
-            "sites": [s for _, s in scored[:k]]}
+            "sites": pick([s for _, s in scored], query, brief, k)}
+
+
+def pick(lines, query, brief, k):
+    if not brief or len(lines) < 2:
+        return lines[:k]
+    items = [{"site": l} for l in lines[:k * 4]]
+    return [it["site"] for it in rerank(query, brief, items, lambda it: it["site"])[:k]]
 
 
 # ---------- Jev rerank ----------
@@ -308,12 +348,15 @@ TOOLS = [
          "k": {"type": "integer", "default": 5}}}},
     {"name": "read", "description": "Return one section's text by the id from find().",
      "inputSchema": {"type": "object", "required": ["id"], "properties": {"id": {"type": "string"}}}},
-    {"name": "refs", "description": "Use this (not find) whenever you need real example websites to look at. Searches ~1,300 cached "
-     "sites from navbar.gallery, cta.gallery, landing.love and saaspo by tag, e.g. 'mega menu', 'pricing', 'dark-mode', "
-     "'finance', 'webgl'. Returns live URLs to screenshot or run design-dna on. No match returns the tag list.",
+    {"name": "refs", "description": "Use this (not find) whenever you need real example websites or a real brand's design system. "
+     "Searches ~1,400 cached sites from navbar.gallery, cta.gallery, landing.love, saaspo by tag ('mega menu', 'pricing', "
+     "'dark-mode', 'finance', 'webgl'), plus source 'design-md': ready DESIGN.md files (colors, type, spacing) for ~74 brands "
+     "like Stripe, Linear, Wise, searchable by look ('lime fintech', 'editorial serif'). Pass brief to rerank by fit. "
+     "No match returns the tag list.",
      "inputSchema": {"type": "object", "required": ["query"], "properties": {
          "query": {"type": "string"},
          "source": {"type": "string", "enum": list(SOURCES)},
+         "brief": {"type": "string", "description": "Optional project brief; enables Jev rerank"},
          "k": {"type": "integer", "default": 10}}}},
 ]
 
@@ -324,7 +367,7 @@ def call(name, a):
     if name == "read":
         return read(a["id"])
     if name == "refs":
-        return refs(a["query"], a.get("source"), a.get("k", 10))
+        return refs(a["query"], a.get("source"), a.get("k", 10), a.get("brief"))
     raise ValueError(f"unknown tool {name}")
 
 
@@ -370,7 +413,7 @@ def main(argv):
     elif cmd == "read":
         print(read(args[0]))
     elif cmd == "refs":
-        print(json.dumps(refs(" ".join(args), opt("--source"), int(opt("--k") or 10)), indent=1, ensure_ascii=False))
+        print(json.dumps(refs(" ".join(args), opt("--source"), int(opt("--k") or 10), opt("--brief")), indent=1, ensure_ascii=False))
     elif cmd == "index":
         print(f"INDEX.md: {build_index()} lines")
     elif cmd == "refresh":

@@ -22,6 +22,9 @@ md = ("[ Visit Website](https://velt.dev/?ref=navbar.gallery) Velt [Velt](https:
       "[x](https://twitter.com/navbargallery) ![](https://cdn.x.com/a.webp) [Home](https://www.navbar.gallery/)")
 assert du.site_links(md, "navbar.gallery") == {"https://velt.dev": "Velt"}, du.site_links(md, "navbar.gallery")
 
+# Every gallery source is either a scraped gallery (regex) or a free GitHub source (None).
+assert "design-md" in du.SOURCES and du.SOURCES["design-md"][1] is None
+
 # MCP handshake over stdio.
 msgs = [{"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-06-18"}},
         {"jsonrpc": "2.0", "method": "notifications/initialized"},
