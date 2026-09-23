@@ -10,7 +10,7 @@ Stdlib only, so any agent can run it with plain `python3`.
   python3 tools/du.py refresh [source ...]                      # re-scrape galleries (Orthogonal, ~$0.005/page)
   python3 tools/du.py serve                                     # MCP server over stdio
 """
-import json, os, re, sqlite3, ssl, subprocess, sys, time, urllib.request
+import json, os, re, sqlite3, ssl, subprocess, sys, time, urllib.error, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -325,13 +325,20 @@ def rerank(query, brief, items, describe):
                                  headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
                                  data=json.dumps({"model": "jev-latest", "state": {"need": query, "brief": brief},
                                                   "questions": questions}).encode())
-    try:
-        # python.org builds on macOS ship without CA certs; fall back to the system bundle.
-        ctx = ssl.create_default_context(cafile="/etc/ssl/cert.pem" if os.path.exists("/etc/ssl/cert.pem") else None)
-        ans = json.load(urllib.request.urlopen(req, timeout=30, context=ctx))["answers"]
-    except Exception as e:
-        print(f"jev rerank skipped: {e}", file=sys.stderr)
-        return items
+    # python.org builds on macOS ship without CA certs; fall back to the system bundle.
+    ctx = ssl.create_default_context(cafile="/etc/ssl/cert.pem" if os.path.exists("/etc/ssl/cert.pem") else None)
+    for attempt in range(4):
+        try:
+            ans = json.load(urllib.request.urlopen(req, timeout=30, context=ctx))["answers"]
+            break
+        except urllib.error.HTTPError as e:
+            if e.code not in (429, 500, 502, 503, 529) or attempt == 3:
+                print(f"jev rerank skipped: {e}", file=sys.stderr)
+                return items
+            time.sleep(float(e.headers.get("retry-after") or 2 ** attempt))  # busy: back off like the SDKs do
+        except Exception as e:
+            print(f"jev rerank skipped: {e}", file=sys.stderr)
+            return items
     for i, it in enumerate(items):
         it["fit"] = round(ans[str(i)]["noul"], 2)
     return sorted(items, key=lambda it: -it["fit"])
