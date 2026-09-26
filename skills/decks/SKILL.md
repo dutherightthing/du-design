@@ -61,10 +61,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 | 提到具体品牌/产品名 | 核心原则#0 事实验证 → §1.a 资产协议 → 标准流程 |
 | 🔴 任何会产出新视觉设计的任务（**无论有没有风格参考、有没有品牌名，100% 必走**） | 三方向硬门：Fallback Phase 1-5 出三版真实初稿等用户选 → 回标准流程 Step 2 |
 | 幻灯片/PPT | 标准流程 + Step 1 deck 交付链 + 「技术红线」架构选型 |
-| 动画/导出 MP4/GIF | 标准流程 + Step 9；**任何动画开工前先按 `references/storyboard-basics.md` 出轻量分镜卡**（每一镜先是一张会动的封面）；镜头级运动（zoom/pan/转场）必读 `references/camera-language.md`；**新动画项目默认走 HyperFrames 后端**（选型边界+契约 → `references/hyperframes-backend.md`，GSAP 实现配方 → `references/gsap-recipes.md`）；动手前必读 `references/animation-pitfalls.md` |
-| 🖥️ **宣传的产品有 UI 界面**（产品动画/功能演示/商单，画面主角是一个界面） | 上一行动画链 + **单一入口 `references/ui-demo-animation.md`**（截图运镜 vs HTML 重建决策树 + UI 展示八式 + `assets/cursor.jsx` 光标组件）；UI 截图取材走 §1.a 资产协议 |
-| 带解说长视频（≥1分钟） | Step 9.5 → `references/voiceover-pipeline.md` |
-| launch film/品牌宣传片（「Apple级」「超级碗品质」） | **三方向硬门先行**（方向板级初稿，见 Fallback「三方向初稿形态」）→ 用户选定后再写万字 director's notes → `references/launch-film-director-notes.md` |
+| 动画/视频/launch film/导出 MP4（du-design: video & animation references were removed from this copy） | Use the `hyperframes` skill + `../motion-design/` + `../emil/`; video references via whatships.com (see `../../sources/ROUTER.md`) |
 | App/iOS 原型 | 「App / iOS 原型专属守则」（覆盖通用规则） |
 | 评审/打分 | Step 10 → `references/critique-guide.md` |
 | 弱 runtime（无 subagent/非 Claude） | 上述任一条 + 「弱 runtime 降级模式」 |
@@ -380,25 +377,7 @@ HTML文件的开头先写下你的assumptions + reasoning + placeholders，**尽
 7. **验证**：用Playwright截图（见 `references/verification.md`），检查控制台错误，发给用户。
    🛑 **检查点5：交付前自己肉眼过一遍浏览器**。AI写的代码经常有interaction bug。
 8. **总结**：极简，只说caveats和next steps。
-9. **（默认）导出视频 · 必带 SFX + BGM**：动画 HTML 的**默认交付形态是带音频的 MP4**，不是纯画面。无声版本等于半成品——用户潜意识感知「画在动但没声音响应」，廉价感的根源就在这里。流水线：
-   - **新动画项目默认 HyperFrames 后端**：`npm run check`（五门审计，暗色电影风 `--no-contrast`）→ `npx hyperframes render --fps 60` → `scripts/verify-video.sh` 产物硬校验。选型边界与老 demo 适配器配方见 `references/hyperframes-backend.md`；弱 runtime/单文件交付/纯交互演示仍走下面的自研管线
-   - `scripts/render-video.js` 录 25fps 纯画面 MP4（只是中间产物，**不是成品**）
-   - 需要**真 60fps / 确定性 / B站作品集交付**且动画走 Stage 时钟时，改用 `scripts/render-video-seek.js --fps=60`（逐帧 seek，免插帧、无黑帧，详见 `references/video-export.md`）
-   - `scripts/convert-formats.sh` 派生 60fps MP4 + palette 优化 GIF（视平台需要）
-   - `scripts/add-music.sh` 加 BGM（6 首场景化配乐：tech/ad/educational/tutorial + alt 变体）
-   - SFX 按 `references/audio-design-rules.md` 设计 cue 清单（时间轴 + 音效类型），用 `assets/sfx/<category>/*.mp3` 37 个预制资源，按配方 A/B/C/D 选密度（发布 hero ≈ 6个/10s，工具演示 ≈ 0-2个/10s）
-   - **BGM + SFX 双轨制必须同时做**——只做 BGM 是 ⅓ 分完成度；SFX 占高频、BGM 占低频，频段隔离见 audio-design-rules.md 的 ffmpeg 模板
-   - 交付前 `ffprobe -select_streams a` 确认有 audio stream，没有则不是成品
-   - **（终渲后）AI看片评审**（可选云能力，自备key+显式确认，见SECURITY.md）：`uv run scripts/cloud/ai-review-video.py --video <成片> --context 导演稿.md --yes` 出结构化报告（黑帧/死段/hero贯穿/过渡类型/音效空打），流程与局限见 `references/ai-video-review.md`；无key时用 `scripts/verify-video.sh` 截帧人工看
-   - **跳过音频的条件**：用户明确说「不要音频」「纯画面」「我要自己配音」——否则默认带。
-   - 参考完整流程见 `references/video-export.md` + `references/audio-design-rules.md` + `references/sfx-library.md`。
-9.5. **（带解说时走这条）解说驱动动画 · L2 长概念视频**：用户要做「5-20 分钟解释一个概念」、「带配音的教程」、「长篇科普视频」时——**不要先做动画再配音**，那会让画面节奏跟解说对不上。改走 `references/voiceover-pipeline.md` 的解说驱动流程：
-   - **写解说稿**（markdown，`## scene-id` 分段，`[[cue:xx]]` 标关键句）→ 解说稿是源代码，节奏靠它撑
-   - **跑 narrate-pipeline.mjs**（豆包 TTS · `.env` 配置音色）→ 输出 voiceover.mp3 + timeline.json（cue 时间是真实测出来的，不是按字符估算）
-   - **🛑 设计动画前先答铁律 3 条**：(1) hero element 是什么？(2) 它跨 7 段怎么 morph？(3) 任意一帧画面有运动吗？答不上不要写代码
-   - **写动画 HTML**：用 `assets/narration_stage.jsx`（NarrationStage + Scene + Cue + useNarration + useSceneFade + **Subtitles**）→ hero 直接放 `<NarrationStage>` 子级，不进 Scene；`<Subtitles />` 默认带（B 站风·深墨字+白光晕，按 timeline.chunks 自动切 ≤12 字短行不跨句号）
-   - **录最终 MP4**：`bash scripts/render-narration.sh demo.html --timeline=_narration/timeline.json [--bgm-mood=educational]` → 自动录无声 MP4 + 混入人声 + 可选 BGM
-   - **失败模式 #1（必须避免）**：每个 Scene 各自独立 layout + cue 用 fade-up + scene 切换整页 opacity 切换 = **带配音的 PowerPoint** = 质感归零。完整规则见 `references/voiceover-pipeline.md` 头部「铁律」章节。
+9. **视频/动画导出**: removed from the du-design copy. Use the `hyperframes` skill (render, audio via `hyperframes-audio`/`media-use`).
 10. **（可选）专家评审**：用户若提「评审」「好不好看」「review」「打分」，或你对产出有疑问想主动质检，按 `references/critique-guide.md` 走 5 维度评审——哲学一致性 / 视觉层级 / 细节执行 / 功能性 / 创新性各 0-10 分，输出总评 + Keep（做得好的）+ Fix（严重程度 ⚠️致命 / ⚡重要 / 💡优化）+ Quick Wins（5 分钟能做的前 3 件事）。评审设计不评设计师。
 
 **检查点原则**：碰到🛑就停下，明确告诉用户"我做了X，下一步打算Y，你确认吗？"然后真的**等**。不要说完自己就开始做。
@@ -509,26 +488,13 @@ HTML文件的开头先写下你的assumptions + reasoning + placeholders，**尽
 | 导出可编辑 PPTX · 路线 A（HTML 还没写，按 4 条硬约束写） | `references/editable-pptx.md` + `scripts/html2pptx.js` |
 | 导出可编辑 PPTX · 路线 B（**HTML 已写好的视觉稿**、**甲方要求用他们的模板**、或 A 转不出来） | `references/pptx-from-rendered-html.md` + `scripts/pptx_from_rendered.py` |
 | **验证 PPTX/渲染产物时「先验证验证工具」** | `references/pptx-from-rendered-html.md` 的「验证」节 + `references/verification.md` |
-| 做动画/motion（**先读 pitfalls**）| `references/animation-pitfalls.md` + `references/animations.md` + `assets/animations.jsx` |
-| ⭐ **动画分镜/画面构图**（任何动画开工前；每一镜先是一张会动的封面：定格帧十一律+景别体系+能量骨架+轻量分镜卡） | `references/storyboard-basics.md`（launch-film 导演稿是它的重装版） |
-| ⭐ **镜头语言/运镜**（zoom/pan/orbit/parallax/转场；预算制+镜间语法+PageCam 相机数学+CSS zoom 栅格化） | `references/camera-language.md`（设计判断）+ `gsap-recipes.md` §9 Camera Rig（实现） |
-| ⭐ **产品UI展示动画**（画面主角是一个界面：截图vs重建决策树+UI展示八式+typing+光标+3D巡览） | `references/ui-demo-animation.md` + `assets/cursor.jsx` |
-| **HyperFrames 渲染后端**（新动画默认；选型边界/合成契约/老demo迁移/check流程） | `references/hyperframes-backend.md` |
-| **设计语言的 GSAP 实现配方**（easing 映射/运动语言8条/五段叙事骨架/seek 安全规则） | `references/gsap-recipes.md` |
-| **动画的正向设计语法**（Anthropic 级叙事/运动/节奏/表达风格）| `references/animation-best-practices.md`（5 段叙事+Expo easing+运动语言 8 条+3 种场景配方）|
-| **带解说的长动画 / 长概念视频**（5-20 分钟带配音、解说驱动画面、TTS 实测时长生成 timeline）| `references/voiceover-pipeline.md`（铁律：连续运动叙事、禁 PowerPoint 切换）+ `assets/narration_stage.jsx` + `scripts/cloud/tts-doubao.mjs`（可选云TTS，自备key，见SECURITY.md）+ `scripts/narrate-pipeline.mjs` + `scripts/{mix-voiceover,render-narration}.sh` |
+| 动画/视频（removed from this copy） | `hyperframes` skill + `../motion-design/` + `../emil/` |
 | 做Tweaks实时调参 | `references/tweaks-system.md` |
 | 没有design context怎么办 | `references/design-context.md`（薄 fallback） 或 `references/design-styles.md`（厚 fallback：HTML 原生 60 种风格库，网页 20+PPT 20+信息图 20，按温度分级） |
 | **需求模糊要推荐风格方向** | `references/design-styles.md`（60 种 HTML 原生风格库，含还原度/温度/开源字体）+ `assets/showcases/INDEX.md`（预制截图画廊） |
 | **按输出类型查场景模板**（封面/PPT/信息图） | `references/scene-templates.md` |
 | 输出完后验证 | `references/verification.md` + `scripts/verify.py` |
 | **设计评审/打分**（设计完成后可选） | `references/critique-guide.md`（5 维度评分+常见问题清单） |
-| **动画导出MP4/GIF/加BGM** | `references/video-export.md` + `scripts/render-video.js`（默认25fps）/ `scripts/render-video-seek.js`（真60fps·确定性·无黑帧，走Stage时钟时用）+ `scripts/convert-formats.sh` + `scripts/add-music.sh` |
-| **动画加音效SFX**（苹果发布会级，37个预制） | `references/sfx-library.md` + `assets/sfx/<category>/*.mp3` |
-| **动画音频配置规则**（SFX+BGM双轨制、黄金配比、ffmpeg模板、场景配方） | `references/audio-design-rules.md` |
-| **Apple画廊展示风格**（3D倾斜+悬浮卡片+缓慢pan+焦点切换，v9实战同款） | `references/apple-gallery-showcase.md` |
-| **Gallery Ripple + Multi-Focus 场景哲学**（当素材 20+ 同质+场景需表达「规模×深度」时优先用；含前置条件、技术配方、5 个可复用模式）| `references/hero-animation-case-study.md`（huashu-design hero v9 蒸馏）|
-| ⭐ **Launch Film 工作流**（30 秒级品牌宣传片 / launch trailer / superbowl-tier ad / Apple 级别预期）：先写**万字 director's notes** 再做动画。含 5 大部分结构 + 触发判断 + 多视角并行策略 + 关键帧验证流程 | `references/launch-film-director-notes.md`（huashu-md-html v2.0 launch film 蒸馏）|
 | ⭐ **多视角并行实验**（用户说「再做几个版本」「想看不同方向」/ 多平台分发 / 客户拍不了板）：6 位艺术家视角同时启动 subagent 各做独立版本 + 完成后 5 维度审校 | `references/multi-perspective-parallel-case-study.md`（huashu-md-html v2.0 6 视角实战）|
 
 ## 跨 Agent 环境适配说明

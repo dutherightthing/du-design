@@ -7,7 +7,7 @@ Otherwise pick a file below; for big files read only the line range you need.
 - `AGENTS.md` ~1.3k tok
 - `CLAUDE.md` ~0.1k tok
 - `README.md` ~1.0k tok
-- `decisions-log.md` ~2.9k tok
+- `decisions-log.md` ~3.0k tok
 - `principles/color.md` ~0.5k tok
 - `principles/motion.md` ~0.8k tok
 - `principles/patterns/README.md` ~0.4k tok
@@ -20,39 +20,20 @@ Otherwise pick a file below; for big files read only the line range you need.
 - `references/README.md` ~0.2k tok
 - `references/your-past-work/jev-selector-fluid-api-discovery.md` ~0.7k tok
 - `skills/README.md` ~1.2k tok
-- `skills/decks/SKILL.md` ~8.5k tok
-  - L55-74 任务路由：一张表定入口 (~339 tok)
-  - L75-106 核心原则 #0 · 事实验证先于假设（优先级最高，凌驾所有其他流程） (~246 tok)
-  - L212-236 设计方向顾问（Fallback 模式） (~327 tok)
-  - L337-349 App / iOS 原型专属守则（速查版） (~255 tok)
-  - L427-442 异常处理 (~241 tok)
-  - L443-454 反AI slop速查（补充项） (~175 tok)
-  - L455-472 技术红线（必读 references/react-setup.md） (~265 tok)
-  - L473-496 Starter Components（assets/下） (~600 tok)
-  - L497-533 References路由表 (~890 tok)
-  - L534-545 跨 Agent 环境适配说明 (~186 tok)
-- `skills/decks/UPSTREAM.md` ~0.1k tok
-- `skills/decks/references/ai-video-review.md` ~0.5k tok
-- `skills/decks/references/animation-best-practices.md` ~3.3k tok
-- `skills/decks/references/animation-pitfalls.md` ~4.8k tok
-  - L18-42 2. 字符陷阱 —— 不依赖稀有 Unicode (~164 tok)
-  - L59-76 4. 过渡断层 —— 场景切换要连续 (~152 tok)
-  - L150-177 10. 录屏开头几秒动画重复 —— Warmup 帧泄漏 (~276 tok)
-  - L178-203 11. 画面内别画「伪 chrome」—— 装饰版 player UI 与真 chrome 撞车 (~263 tok)
-  - L204-287 12. 录屏前置空白 + 录屏起点偏移 —— `__ready` × tick × lastTick 三联陷阱 (~719 tok)
-  - L288-314 13. 录制时禁止 loop —— `window.__recording` 信号 (~287 tok)
-  - L315-332 14. 60fps 视频默认用帧复制 —— minterpolate 兼容性差 (~168 tok)
-  - L333-347 15. `file://` + 外部 `.jsx` 的 CORS 陷阱 —— 单文件交付必须内联引擎 (~208 tok)
-  - L348-362 16. 跨 scene 反色上下文 —— 画面内元素不要硬编码颜色 (~158 tok)
-  - L363-383 17. 离线/无 CDN 的真·自包含 —— React/Babel 全内联，且引擎也要 transpile (~476 tok)
-  - L432-457 快速自查清单（开工前 5 秒） (~383 tok)
-- `skills/decks/references/animations.md` ~1.4k tok
+- `skills/decks/SKILL.md` ~7.4k tok
+  - L55-71 任务路由：一张表定入口 (~219 tok)
+  - L72-103 核心原则 #0 · 事实验证先于假设（优先级最高，凌驾所有其他流程） (~246 tok)
+  - L209-233 设计方向顾问（Fallback 模式） (~327 tok)
+  - L334-346 App / iOS 原型专属守则（速查版） (~255 tok)
+  - L406-421 异常处理 (~241 tok)
+  - L422-433 反AI slop速查（补充项） (~175 tok)
+  - L434-451 技术红线（必读 references/react-setup.md） (~265 tok)
+  - L452-475 Starter Components（assets/下） (~600 tok)
+  - L476-499 References路由表 (~413 tok)
+  - L500-511 跨 Agent 环境适配说明 (~186 tok)
+- `skills/decks/UPSTREAM.md` ~0.2k tok
 - `skills/decks/references/app-prototype.md` ~1.4k tok
-- `skills/decks/references/apple-gallery-showcase.md` ~2.1k tok
-- `skills/decks/references/audio-design-rules.md` ~1.5k tok
 - `skills/decks/references/brand-asset-protocol.md` ~2.1k tok
-- `skills/decks/references/camera-language.md` ~3.1k tok
-- `skills/decks/references/cinematic-patterns.md` ~1.8k tok
 - `skills/decks/references/content-guidelines.md` ~1.2k tok
 - `skills/decks/references/critique-guide.md` ~1.0k tok
 - `skills/decks/references/design-context.md` ~1.0k tok
@@ -63,28 +44,16 @@ Otherwise pick a file below; for big files read only the line range you need.
   - L365-517 信息图风格库(20种) (~1982 tok)
   - L518-537 ⚠️ AI 生图专用风格（仅在确认用户有生图能力时才推，default 不可选） (~188 tok)
 - `skills/decks/references/editable-pptx.md` ~2.7k tok
-- `skills/decks/references/gsap-recipes.md` ~6.2k tok
-  - L16-45 0 · 基础样板（每个合成都从这里开始） (~220 tok)
-  - L46-61 1 · Easing 映射表 · 自研 Easing → GSAP (~222 tok)
-  - L98-152 2 · 五段叙事骨架 · Slow-Fast-Boom-Stop（15/15/40/20/10%） (~459 tok)
-- `skills/decks/references/hero-animation-case-study.md` ~1.7k tok
-- `skills/decks/references/hyperframes-backend.md` ~1.2k tok
-- `skills/decks/references/launch-film-director-notes.md` ~2.1k tok
 - `skills/decks/references/multi-perspective-parallel-case-study.md` ~1.6k tok
 - `skills/decks/references/pptx-from-rendered-html.md` ~1.2k tok
 - `skills/decks/references/react-setup.md` ~1.8k tok
 - `skills/decks/references/scene-templates.md` ~1.2k tok
-- `skills/decks/references/sfx-library.md` ~1.9k tok
 - `skills/decks/references/slide-decks.md` ~5.5k tok
   - L1-21 Slide Decks：HTML幻灯片制作规范 (~220 tok)
   - L89-110 🛑 批量制作前：先做 2 页 showcase 定 grammar (~166 tok)
-- `skills/decks/references/storyboard-basics.md` ~2.8k tok
 - `skills/decks/references/tweaks-system.md` ~1.8k tok
 - `skills/decks/references/typography.md` ~2.5k tok
-- `skills/decks/references/ui-demo-animation.md` ~3.6k tok
 - `skills/decks/references/verification.md` ~1.0k tok
-- `skills/decks/references/video-export.md` ~1.8k tok
-- `skills/decks/references/voiceover-pipeline.md` ~3.3k tok
 - `skills/decks/references/workflow.md` ~0.9k tok
 - `skills/design-dna/SKILL.md` ~2.0k tok
 - `skills/design-dna/UPSTREAM.md` ~0.1k tok

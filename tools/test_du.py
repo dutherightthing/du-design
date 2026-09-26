@@ -17,6 +17,9 @@ assert "Simple Icons" in du.read(row["id"]) and du.read(row["id"]).count("\n") =
 # Video inspiration routes to whatships.
 assert any("whatships" in du.read(h["id"]) for h in du.find("launch video inspiration", 5))
 
+# Animation needs reach the motion skills, not deck notes.
+assert any(h["id"].startswith(("skills/emil", "skills/motion-design", "principles/motion")) for h in du.find("animation easing", 3))
+
 # read() refuses paths outside the repo.
 assert du.read("../../etc/passwd:1-5").startswith("no such file")
 

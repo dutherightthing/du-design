@@ -32,7 +32,7 @@ Deeper capabilities beyond the principles files. **These skills are vendored int
 
 ### `decks/` — presentation generation
 - **Upstream:** `alchaincyf/huashu-design`
-- **Use for:** high-fidelity decks (HTML + editable PPTX), prototypes, infographics, critiques. Has a "brand asset protocol" that anchors output to real brand colors/type. Start at [`decks/SKILL.md`](decks/SKILL.md); many `references/` (slide-decks, typography, animation, brand-asset-protocol, critique-guide…).
+- **Use for:** high-fidelity decks (HTML + editable PPTX), prototypes, infographics, critiques. Has a "brand asset protocol" that anchors output to real brand colors/type. Start at [`decks/SKILL.md`](decks/SKILL.md); slide `references/` (slide-decks, typography, pptx export, brand-asset-protocol, critique-guide…); video/animation notes were trimmed — use HyperFrames + motion-design + emil.
 - **Note:** some references assume upstream `assets/`/`scripts/` (render pipeline, PPTX export) that were left upstream. The *design knowledge* is all here; if you need the actual export tooling, see [`decks/UPSTREAM.md`](decks/UPSTREAM.md).
 - **When:** slide decks and pitch material. Pairs with [`../principles/slides.md`](../principles/slides.md).
 

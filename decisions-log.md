@@ -12,6 +12,9 @@ Format:
 
 ---
 
+## 2026-09-26 — trimmed decks skill to slides only (meta)
+- Removed 17 video/animation references from `skills/decks/` (~45k tokens). They outranked motion-design/emil in `find` ("animation easing" returned only deck notes) and duplicated HyperFrames. Kept taste-skill as-is: it is the anti-slop core and only costs tokens when read.
+
 ## 2026-09-26 — whatships.com for video references (meta)
 - Video intake now sends Jerry to whatships.com to name the launch videos he likes; the agent studies them with the router's recipe (search-index.json → mp4 → one ffmpeg contact sheet). Jerry's call: he picks, the agent doesn't.
 - Deliberately not cached in `refs`: he browses visually, so the only lookup needed is name → slug, which the site's own index does for free.
