@@ -32,6 +32,7 @@
 | Animated React components to drop in (heroes, backgrounds, text FX) | [`../toolbelt/aceternity.md`](../toolbelt/aceternity.md) · [`../toolbelt/react-bits.md`](../toolbelt/react-bits.md) | install | React + Tailwind + Motion. Seasoning, not the meal — see cards. |
 | UI icons (interface glyphs: arrows, settings, etc.) | [`../toolbelt/hugeicons.md`](../toolbelt/hugeicons.md) | install | Large set, free tier + pro. |
 | Brand / company / logo icons (GitHub, Google, Shopify, X…) | Simple Icons → [`../toolbelt/super-tiny-icons.md`](../toolbelt/super-tiny-icons.md) → Wikimedia Commons | direct | Try in order. Simple Icons (3,000+ brands, CC0, single-color): `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/<slug>.svg` (verified 2026-09-23). SuperTinyIcons for full-color rounded marks. Wikimedia only as a last resort. Never ship a placeholder for a real brand. |
+| Video / launch film / product demo / motion-graphics inspiration | whatships.com (2,200+ startup launch videos from X) | direct | **Don't pick for Jerry.** Send him to https://whatships.com/ to browse; he names the videos. Then run the [whatships recipe](#whatships-recipe-video-rows) below. |
 | Motion & interaction taste; grade or fix animations | [`../skills/emil/`](../skills/emil/) · [`../skills/motion-design/`](../skills/motion-design/) | vendored | Read in-repo. `emil-design-eng` (philosophy), `animate` (curves/durations), `review-animations` (grading). |
 | "Make it feel like <a specific site/image>" | [`../skills/design-dna/`](../skills/design-dna/) | vendored | Extract tokens from a reference. Feed it a gallery pick or a URL Jerry names. |
 
@@ -71,6 +72,20 @@ The blocked domains are reachable through Orthogonal's `ScrapeGraphAI` API (its 
 **Extract one site's tokens (palette / fonts / logo):** add `{ "type": "branding" }` → ~$0.125. Use sparingly; overlaps with the `design-dna` skill (prefer design-dna if you can screenshot).
 
 **Cost discipline:** markdown to find candidates, screenshot only the 2–3 you shortlist, branding only when you can't get it any other way. A typical inspiration pull is a few cents.
+
+## whatships recipe (video rows)
+
+Plain `curl`, free, verified 2026-09-26. Work in the *project* folder, not this repo.
+
+1. **Name → slug:** `curl -s https://whatships.com/search-index.json | python3 -c "import json,sys; q='<name>'.lower(); [print(v['slug'],'—',v['name']) for v in json.load(sys.stdin) if q in v['searchText']]"`
+2. **Details** (product, duration, original X post): `curl -s -H 'Accept: text/markdown' https://whatships.com/videos/<slug>/`
+3. **See it** — pull the mp4 URL, then one contact sheet (1 frame/sec; one image shows the whole structure, pacing, and type):
+   ```bash
+   U=$(curl -s https://whatships.com/videos/<slug>/ | grep -o 'videoUrl&quot;:\[0,&quot;[^&]*' | head -1 | sed 's/.*&quot;//')
+   ffmpeg -loglevel error -i "$U" -vf "fps=1,scale=320:-1,tile=6x5" -frames:v 1 <slug>-sheet.png
+   ```
+   Longer than 30s: use `fps=1/2`. Need exact timing on a moment: grab single frames with `-ss <sec> -frames:v 1`.
+4. Write down what to borrow (structure, pacing, type, transitions) and what not to. Cite the original X post, not the mp4. Never commit videos or frames here.
 
 ## Maintenance
 

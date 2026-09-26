@@ -34,6 +34,7 @@ du-design/
 ├── README.md              ← you are here
 ├── AGENTS.md              ← the router (agents read this first)
 ├── CLAUDE.md              ← points Claude at AGENTS.md
+├── INDEX.md               ← generated map of every file + token size
 ├── your-profile.md        ← Jerry's standing preferences (grows over time)
 ├── decisions-log.md       ← dated record of what shipped and why
 ├── 00-intake/             ← ⭐ the discovery/interview skill — run first
@@ -41,7 +42,8 @@ du-design/
 ├── skills/                ← deeper skills (taste, design-dna, motion, decks)
 ├── toolbelt/              ← index cards for code libraries (when to use what)
 ├── sources/               ← router: which external source to pull from + how to retrieve it
-└── references/            ← moodboards + annotated past work (taste inputs)
+├── references/            ← moodboards + annotated past work (taste inputs)
+└── tools/                 ← du.py: find/read/refs lookup (MCP + CLI), see tools/README.md
 ```
 
 **`sources/` vs `references/`:** `references/` is Jerry's *own* curated taste (his moodboards, his shipped work). `sources/` is the map of *external* places to pull from — inspiration galleries, component/icon libraries — with a dispatch table so an agent picks the right one automatically ([`sources/ROUTER.md`](sources/ROUTER.md)).

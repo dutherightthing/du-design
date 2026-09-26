@@ -31,6 +31,8 @@ From his request + profile, state the medium and confirm only if unclear:
 
 The medium selects which questions and which sliders apply (see rubric below). Skip anything irrelevant to the medium.
 
+**Video/motion (both modes):** in the same message, send him to https://whatships.com/ and ask him to name 1–3 videos whose feel he wants. Study them with the whatships recipe in [`../sources/ROUTER.md`](../sources/ROUTER.md) before proposing directions. Don't pick videos for him.
+
 ## Phase 1 — The brief (2 questions, plain language)
 
 1. **"In one sentence — what is this, and who's it for?"**

@@ -12,6 +12,10 @@ Format:
 
 ---
 
+## 2026-09-26 — whatships.com for video references (meta)
+- Video intake now sends Jerry to whatships.com to name the launch videos he likes; the agent studies them with the router's recipe (search-index.json → mp4 → one ffmpeg contact sheet). Jerry's call: he picks, the agent doesn't.
+- Deliberately not cached in `refs`: he browses visually, so the only lookup needed is name → slug, which the site's own index does for free.
+
 ## 2026-09-23 — du-design lookup MCP + INDEX.md (meta)
 - Built `tools/du.py`, a stdlib-only tool that works as an MCP server or from the shell. `find`/`read` return a single section instead of a whole file. `refs` searches a local cache of navbar.gallery, cta.gallery, landing.love and saaspo (gitignored `.cache/`). Jev reranks `find` results when a brief is passed and `TYPESAFE_API_KEY` is in `.env.local`. Also generated `INDEX.md`, a ~2K-token map with line ranges for big files.
 - Why: the repo is only ~280K tokens, but agents read whole files (taste-skill alone is ~22K) and re-scraped galleries every project. The real references live off-repo, so the cache matters more than the repo search.

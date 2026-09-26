@@ -3,11 +3,11 @@
 Fastest path: the `du-design` MCP (`find` → `read`). Without it, run `python3 tools/du.py find "<need>"`.
 Otherwise pick a file below; for big files read only the line range you need.
 
-- `00-intake/SKILL.md` ~2.5k tok
+- `00-intake/SKILL.md` ~2.6k tok
 - `AGENTS.md` ~1.3k tok
 - `CLAUDE.md` ~0.1k tok
 - `README.md` ~1.0k tok
-- `decisions-log.md` ~2.8k tok
+- `decisions-log.md` ~2.9k tok
 - `principles/color.md` ~0.5k tok
 - `principles/motion.md` ~0.8k tok
 - `principles/patterns/README.md` ~0.4k tok
@@ -127,7 +127,7 @@ Otherwise pick a file below; for big files read only the line range you need.
   - L896-909 13. OUT OF SCOPE (~173 tok)
   - L910-982 14. FINAL PRE-FLIGHT CHECK (~1763 tok)
   - L987-1032 Appendix A - Install Commands per Design System (~291 tok)
-- `sources/ROUTER.md` ~2.4k tok
+- `sources/ROUTER.md` ~2.7k tok
 - `templates/brief.md` ~0.3k tok
 - `toolbelt/README.md` ~0.3k tok
 - `toolbelt/aceternity.md` ~0.7k tok

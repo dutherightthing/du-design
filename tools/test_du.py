@@ -14,6 +14,9 @@ assert du.find("   ") == [] and du.find("!!!") == []
 row = next(h for h in du.find("brand logo icons", 5) if h["id"].startswith("sources/ROUTER.md"))
 assert "Simple Icons" in du.read(row["id"]) and du.read(row["id"]).count("\n") == 0
 
+# Video inspiration routes to whatships.
+assert any("whatships" in du.read(h["id"]) for h in du.find("launch video inspiration", 5))
+
 # read() refuses paths outside the repo.
 assert du.read("../../etc/passwd:1-5").startswith("no such file")
 
